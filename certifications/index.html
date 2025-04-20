@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certifications | Niroshan Lakmal</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/certifications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap">
+   
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="logo">Niroshan<span>Lakmal</span></a>
+            <div class="nav-links">
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#certifications">Certifications</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section certifications-section">
+            <h2 class="section-title">My <span>Certifications</span></h2>
+            
+            <!-- Filter Buttons Container -->
+            <div class="filters-container">
+                <div class="certification-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="linkedin">LinkedIn</button>
+                    <button class="filter-btn" data-filter="udemy">Udemy</button>
+                    <button class="filter-btn" data-filter="coursera">Coursera</button>
+                    <button class="filter-btn" data-filter="others">Others</button>
+                </div>
+            </div>
+            
+            <div class="certifications-grid">
+                <!-- Certification cards will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Niroshan Lakmal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Extended certifications data for the dedicated page
+        const allCertificationsData = [
+            {
+                id: 1,
+                title: "Introduction to Career Skills in Data Analytics",
+                description: "Foundational course covering data collection, analysis, and visualization techniques with hands-on practice using industry-standard tools for data-driven decision making.",
+                platform: "linkedin",
+                date: "Oct 2024",
+                image: "images/Introduction to Career Skills in Data Analytics.JPG",
+                logo: "images/Icons/linkedin.png"
+            },
+            {
+                id: 2,
+                title: "Learning Data Analytics Part 2",
+                description: "Advanced data analytics course building on foundational concepts. Covered statistical techniques, data modeling, and visualization methods to extract deeper insights and enhance decision-making capabilities.",
+                platform: "linkedin",
+                date: "Oct 2024",
+                image: "images/Introduction to Career Skills in Data Analytics.JPG",
+                logo: "images/Icons/linkedin.png"
+            },
+            {
+                id: 3,
+                title: "Microsoft Power BI Desktop for Business Intelligence",
+                description: "Mastered Power BI fundamentals for creating interactive dashboards, data modeling, and advanced analytics. Gained practical skills in business intelligence visualization and reporting techniques for effective data communication.",
+                platform: "udemy",
+                date: "Nov 2024",
+                image: "images/Microsoft Power BI Desktop For Business Intelligence.JPG",
+                logo: "images/Icons/udemy.png"
+            },
+            {
+                id: 4,
+                title: "Data Story Telling & Visualization Mastery",
+                description: "Comprehensive training in transforming complex data into compelling visual narratives. Developed advanced skills in data visualization techniques and storytelling methods to effectively communicate insights and drive decision-making.",
+                platform: "udemy",
+                date: "Dec 2024",
+                image: "images/Data Story Telling & Visualization Mastery.JPG",
+                logo: "images/Icons/udemy.png"
+            },
+         
+            {
+                id: 5,
+                title: "Cloud Basics For Data Professional",
+                description: "Essential cloud computing course tailored for data professionals. Covered fundamentals of cloud architecture, storage solutions, and best practices for managing and processing data in cloud environments. certificate in data analytics tools and techniques",
+                platform: "udemy",
+                date: "Dec 2024",
+                image: "images/Cloud Basics for Data Professionals- Certificate.jpg",
+                logo: "images/Icons/udemy.png"
+            },
+            {
+                id: 6,
+                title: "Chat GPT For Power BI Users",
+                description: "Mastering SQL queries for complex data analysis tasks",
+                platform: "others",
+                date: "March 2025",
+                image: "images/Chat GPT For Power BI Users.jpg",
+                logo: "images/Icons/Enterprise DNA.png"
+            },
+            {
+                id: 7,
+                title: "Accessing Data Via APIS in Power BI",
+                description: "Advanced visualization techniques in Tableau",
+                platform: "others",
+                date: "Apr 2025",
+                image: "images/Accessing Data Via APIS in Power BI.jpg",
+                logo: "images/Icons/Enterprise DNA.png"
+            }
+         
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all certifications on the dedicated page
+            const certificationsGrid = document.querySelector('.certifications-grid');
+            
+            if (certificationsGrid) {
+                allCertificationsData.forEach(cert => {
+                    const certCard = document.createElement('div');
+                    certCard.classList.add('certification-card');
+                    certCard.dataset.platform = cert.platform;
+                    
+                    certCard.innerHTML = `
+                        <div class="certification-header">
+                            <img src="${cert.logo}" alt="${cert.platform}" class="platform-logo">
+                            <span class="certification-date">${cert.date}</span>
+                        </div>
+                        <div class="certification-body">
+                            <h3>${cert.title}</h3>
+                            <p>${cert.description}</p>
+                            <div class="certification-image-preview">
+                                <img src="${cert.image}" alt="${cert.title}" class="cert-image">
+                            </div>
+                        </div>
+                    `;
+                    
+                    certificationsGrid.appendChild(certCard);
+                    
+                    // Add click event to the certification image
+                    const certImage = certCard.querySelector('.cert-image');
+                    if (certImage) {
+                        certImage.addEventListener('click', function() {
+                            openImageModal(cert.image, cert.title);
+                        });
+                    }
+                });
+                
+                // Setup filtering
+                const filterButtons = document.querySelectorAll('.certification-filters .filter-btn');
+                
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Update active filter button
+                        const activeButton = document.querySelector('.certification-filters .filter-btn.active');
+                        if (activeButton) {
+                            activeButton.classList.remove('active');
+                        }
+                        button.classList.add('active');
+                        
+                        const filter = button.dataset.filter;
+                        const certCards = document.querySelectorAll('.certification-card');
+                        
+                        certCards.forEach(card => {
+                            if (filter === 'all' || card.dataset.platform === filter) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+            
+            // Set current year in footer
+            const yearElement = document.getElementById('year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+        
+        // Function to open image modal
+        function openImageModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+            
+            modal.classList.add('show');
+            modalImg.src = imageSrc;
+            captionText.innerHTML = title;
+            
+            // Close modal when clicking the X
+            const closeModal = document.querySelector('.close-modal');
+            closeModal.onclick = function() {
+                modal.classList.remove('show');
+            };
+            
+            // Close modal when clicking outside the image
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            };
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

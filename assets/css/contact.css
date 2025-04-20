@@ -1,0 +1,678 @@
+/* Enhanced Contact Form Styles with Better Contrast and Improved Input Boxes */
+:root {
+    --form-bg: rgba(29, 41, 81, 0.95);
+    --input-text: #ffffff;
+    --input-placeholder: rgba(114, 159, 255, 0.7);
+    --input-border: rgba(114, 159, 255, 0.4);
+    --input-focus: #4895ef;
+    --label-color: rgba(114, 159, 255, 0.85);
+    --button-gradient: linear-gradient(135deg, #4361ee, #4895ef);
+    --button-hover: linear-gradient(135deg, #4895ef, #4361ee);
+    --success-color: #2ecc71;
+    --transition: all 0.3s ease;
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    border-radius: 16px;
+    background: var(--form-bg);
+    backdrop-filter: blur(12px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(72, 149, 239, 0.2);
+    transition: var(--transition);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Fixed Form Group Styling */
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Improved Input Styling */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.05rem;
+    color: var(--input-text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    outline: none;
+    transition: var(--transition);
+    font-family: var(--font-body, sans-serif);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved Focus State */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--input-focus);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(72, 149, 239, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--input-placeholder);
+    opacity: 0.7;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234895ef' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+    color: var(--input-text);
+}
+
+.form-group select option {
+    background-color: #1a2440;
+    color: var(--input-text);
+}
+
+/* Updated Label Positioning */
+.form-group label {
+    position: absolute;
+    top: -0.75rem;
+    left: 0.75rem;
+    padding: 0 0.5rem;
+    color: var(--label-color);
+    background-color: var(--form-bg);
+    border-radius: 4px;
+    pointer-events: none;
+    transition: var(--transition);
+    font-family: var(--font-body, sans-serif);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+/* Focus and valid states for labels */
+.form-group input:focus ~ label,
+.form-group input:valid ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label,
+.form-group select:focus ~ label,
+.form-group select:valid ~ label {
+    color: #4895ef;
+    font-weight: 600;
+    transform: translateY(-2px);
+}
+
+/* Removed underline styling as it's no longer needed with the new input design */
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    margin-top: 1.5rem;
+    font-family: var(--font-body, sans-serif);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--button-hover);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(67, 97, 238, 0.5);
+}
+
+.submit-btn:hover::before {
+    left: 0;
+}
+
+.submit-btn i {
+    margin-left: 0.5rem;
+    transition: all 0.4s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px) rotate(20deg);
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.modal-icon i {
+    color: var(--success-color);
+}
+
+#modalTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#modalMessage {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.modal-close {
+    padding: 0.6rem 1.5rem;
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+/* Hidden utility class */
+.hidden {
+    display: none !important;
+}
+
+/* Modern scrollbar for textarea */
+.form-group textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-group textarea::-webkit-scrollbar-track {
+    background: rgba(72, 149, 239, 0.05);
+    border-radius: 10px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb {
+    background: rgba(72, 149, 239, 0.2);
+    border-radius: 10px;
+}
+
+.form-group textarea::-webkit-scrollbar-thumb:hover {
+    background: rgba(72, 149, 239, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-form-container {
+        padding: 1.5rem;
+        margin: 2rem auto;
+    }
+    
+    .submit-btn {
+        padding: 0.9rem 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.9rem;
+    }
+}
+
+/* Animation for form elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.submit-btn { animation-delay: 0.6s; }
+
+
+/* Thank You Card Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 30, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #ffffff, #f8f9ff);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    transform: translateY(-30px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+/* Decorative elements */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        rgba(114, 159, 255, 0.1),
+        transparent 70%
+    );
+    z-index: -1;
+}
+
+.modal-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.modal-icon::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(67, 97, 238, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+.modal-icon i {
+    color: var(--success-color);
+    filter: drop-shadow(0 2px 5px rgba(46, 204, 113, 0.3));
+}
+
+#modalTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #1d2951;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+#modalMessage {
+    font-size: 1.15rem;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+.modal-close {
+    padding: 0.8rem 2rem;
+    background: var(--button-gradient);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-close::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--button-hover);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.modal-close:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 97, 238, 0.5);
+}
+
+.modal-close:hover::before {
+    left: 0;
+}
+
+/* Additional animation for modal entrance */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal.active .modal-content {
+    animation: modalFadeIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Contact Section Header Styling with Improved Color Visibility */
+.contact-header {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.contact-title-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff; /* White text for best contrast on blue */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for better readability */
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.animated-underline {
+    height: 4px;
+    background: linear-gradient(135deg, #ffffff, #ffcc00); /* Bright yellow-white gradient */
+    width: 0;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 2px;
+    animation: expandWidth 1.2s ease-out forwards 0.3s;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.contact-description {
+    font-size: 1.1rem;
+    color: #ffffff; /* Pure white for best contrast */
+    font-weight: 500; /* Slightly bolder */
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out forwards 0.2s;
+    opacity: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Subtle text shadow */
+}
+
+/* Social Links with Improved Visibility */
+.contact-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out forwards 0.4s;
+    opacity: 0;
+}
+
+.social-link {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.25); /* More visible background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; /* White icons for contrast */
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Brighter border */
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffcc00, #ff6600); /* Bright orange-yellow */
+    top: 0;
+    left: -100%;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.social-link i {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.social-link:hover::before {
+    left: 0;
+}
+
+.social-tooltip {
+    position: absolute;
+    bottom: -35px;
+    background: rgba(255, 255, 255, 0.95); /* Light background */
+    color: #1a73e8; /* Blue text for contrast */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem; /* Slightly larger */
+    font-weight: 600; /* Bolder for visibility */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.social-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.social-link:hover .social-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: -40px;
+}
+
+/* Animations remain unchanged */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 2rem;
+    }
+    
+    .contact-description {
+        font-size: 1rem;
+    }
+    
+    .social-link {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+}
