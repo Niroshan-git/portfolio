@@ -4,9 +4,9 @@ const projectsData = [
         id: 1,
         title: "Excel Analytics and Data Visualization Charts",
         description: " Contains a collection of advanced Excel projects in data analysis, visualization, and business reporting. ",
-        image: "projects/project1/assets/images/Main Image.jpg",
+        image: "/portfolio/projects/project1/assets/images/Main Image.jpg",
         category: "Excel",
-        link: "projects/project1/index.html",
+        link: "/portfolio/projects/project1/index.html",
         featured: true,
         date: "2023-10-15" // Added date field in YYYY-MM-DD format
     },
