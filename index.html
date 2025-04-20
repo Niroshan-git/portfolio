@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Niroshan Lakmal</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap">
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <header class="header">
+        <nav class="nav">
+            <a href="hero" class="logo">Portfolio<span></span></a>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-intro">
+                <span class="hero-greeting">👋 Hi, I am</span>
+                <h1 class="hero-title">
+                    <span class="title-word">Niroshan</span>
+                    <span class="title-word">Lakmal</span>
+                </h1>
+                <div class="hero-role">
+                    <span class="role-title">ERP Consultant <span class="role-plus">+</span></span>
+                    <span class="role-subtitle">Data Visualization Expert</span>
+                </div>
+                <p class="hero-subtitle">I transform complex datasets into meaningful insights that drive business decisions</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="data-sphere" id="data-sphere"></div>
+            </div>
+
+            <div class="dashboard-showcase">
+                <!-- Power BI Style Dashboard with SVG Charts -->
+                <div class="powerbi-dashboard">
+                    <div class="dashboard-content">
+                        <div class="metric-card metric-large">
+                            <div class="metric-title">Total Sales</div>
+                            <div class="metric-value">$1.78M</div>
+                            <div class="metric-change">+19%</div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-title">Power Score</div>
+                            <div class="metric-value">51</div>
+                            <div class="chart-container">
+                                <!-- Line chart SVG for Score Trend -->
+                                <svg class="chart-svg" viewBox="0 0 100 60">
+                                    <!-- Background grid lines -->
+                                    <line x1="0" y1="15" x2="100" y2="15" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="30" x2="100" y2="30" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="45" x2="100" y2="45" stroke="#e9ecef" stroke-width="0.5"/>
+                                    
+                                    <!-- Line chart -->
+                                    <path d="M5,45 L15,40 L25,35 L35,38 L45,30 L55,25 L65,20 L75,28 L85,15 L95,10" 
+                                        fill="none" stroke="#4dabf7" stroke-width="2" class="chart-line"/>
+                                    
+                                    <!-- Data points -->
+                                    <circle cx="5" cy="45" r="2" fill="#4dabf7"/>
+                                    <circle cx="15" cy="40" r="2" fill="#4dabf7"/>
+                                    <circle cx="25" cy="35" r="2" fill="#4dabf7"/>
+                                    <circle cx="35" cy="38" r="2" fill="#4dabf7"/>
+                                    <circle cx="45" cy="30" r="2" fill="#4dabf7"/>
+                                    <circle cx="55" cy="25" r="2" fill="#4dabf7"/>
+                                    <circle cx="65" cy="20" r="2" fill="#4dabf7"/>
+                                    <circle cx="75" cy="28" r="2" fill="#4dabf7"/>
+                                    <circle cx="85" cy="15" r="2" fill="#4dabf7"/>
+                                    <circle cx="95" cy="10" r="2" fill="#4dabf7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-title">Sales by Category</div>
+                            <div class="chart-container">
+                                <!-- Pie chart SVG for Category Breakdown -->
+                                <svg class="chart-svg" viewBox="0 0 100 100">
+                                    <!-- Pie chart segments -->
+                                    <circle cx="50" cy="50" r="40" fill="none" stroke="#e9ecef" stroke-width="1"/>
+                                    
+                                    <!-- Pie segments -->
+                                    <path d="M50,50 L90,50 A40,40 0 0,1 75,85 Z" fill="#4dabf7" class="chart-pie-segment" stroke="#ffffff" stroke-width="1"/>
+                                    <path d="M50,50 L75,85 A40,40 0 0,1 25,85 Z" fill="#ff6b6b" class="chart-pie-segment" stroke="#ffffff" stroke-width="1"/>
+                                    <path d="M50,50 L25,85 A40,40 0 0,1 10,50 Z" fill="#20c997" class="chart-pie-segment" stroke="#ffffff" stroke-width="1"/>
+                                    <path d="M50,50 L10,50 A40,40 0 0,1 50,10 L50,50 Z" fill="#ffd43b" class="chart-pie-segment" stroke="#ffffff" stroke-width="1"/>
+                                    <path d="M50,50 L50,10 A40,40 0 0,1 90,50 L50,50 Z" fill="#a5d8ff" class="chart-pie-segment" stroke="#ffffff" stroke-width="1"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-title">Sales by Month</div>
+                            <div class="chart-container">
+                                <!-- Bar chart SVG for Monthly Trends -->
+                                <svg class="chart-svg" viewBox="0 0 100 60">
+                                    <!-- Background grid lines -->
+                                    <line x1="0" y1="45" x2="100" y2="45" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="30" x2="100" y2="30" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="15" x2="100" y2="15" stroke="#e9ecef" stroke-width="0.5"/>
+                                    
+                                    <!-- Bars -->
+                                    <rect x="5" y="35" width="6" height="10" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="15" y="25" width="6" height="20" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="25" y="20" width="6" height="25" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="35" y="10" width="6" height="35" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="45" y="15" width="6" height="30" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="55" y="25" width="6" height="20" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="65" y="30" width="6" height="15" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="75" y="15" width="6" height="30" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="85" y="5" width="6" height="40" fill="#4dabf7" class="chart-bar"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card" style="grid-column: span 2;">
+                            <div class="metric-title">Sales and Profit Margin</div>
+                            <div class="chart-container">
+                                <!-- Combination chart SVG for Performance Overview -->
+                                <svg class="chart-svg" viewBox="0 0 100 60">
+                                    <!-- Background grid lines -->
+                                    <line x1="0" y1="15" x2="100" y2="15" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="30" x2="100" y2="30" stroke="#e9ecef" stroke-width="0.5"/>
+                                    <line x1="0" y1="45" x2="100" y2="45" stroke="#e9ecef" stroke-width="0.5"/>
+                                    
+                                    <!-- Bars for Sales -->
+                                    <rect x="10" y="30" width="4" height="15" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="20" y="20" width="4" height="25" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="30" y="15" width="4" height="30" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="40" y="10" width="4" height="35" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="50" y="15" width="4" height="30" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="60" y="20" width="4" height="25" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="70" y="5" width="4" height="40" fill="#4dabf7" class="chart-bar"/>
+                                    <rect x="80" y="10" width="4" height="35" fill="#4dabf7" class="chart-bar"/>
+                                    
+                                    <!-- Line for Profit Margin -->
+                                    <path d="M12,25 L22,20 L32,28 L42,15 L52,22 L62,18 L72,10 L82,12" 
+                                        fill="none" stroke="#ff6b6b" stroke-width="2" class="chart-line"/>
+                                    
+                                    <!-- Data points -->
+                                    <circle cx="12" cy="25" r="2" fill="#ff6b6b"/>
+                                    <circle cx="22" cy="20" r="2" fill="#ff6b6b"/>
+                                    <circle cx="32" cy="28" r="2" fill="#ff6b6b"/>
+                                    <circle cx="42" cy="15" r="2" fill="#ff6b6b"/>
+                                    <circle cx="52" cy="22" r="2" fill="#ff6b6b"/>
+                                    <circle cx="62" cy="18" r="2" fill="#ff6b6b"/>
+                                    <circle cx="72" cy="10" r="2" fill="#ff6b6b"/>
+                                    <circle cx="82" cy="12" r="2" fill="#ff6b6b"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="8">0</span>+
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="30">0</span>+
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="30">0</span>+
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="7">0</span>+
+                    <span class="stat-label">Certifications</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section services-section">
+            <h2 class="section-title">My Quality <span>Services</span></h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="service-title">Data Analysis</h3>
+                    <p class="service-description">Transform raw data into actionable insights through statistical analysis and data mining techniques.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="service-title">Data Visualization</h3>
+                    <p class="service-description">Create compelling visual representations of data to communicate findings effectively.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="service-title">Business Intelligence</h3>
+                    <p class="service-description">Develop BI solutions that help organizations make informed strategic decisions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects-section">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            
+            <!-- Filter Buttons Container -->
+            <div class="filters-container">
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="Excel">Excel</button>
+                    <button class="filter-btn" data-filter="PowerBI">PowerBI</button>
+                    <button class="filter-btn" data-filter="SQL">SQL</button>
+                    <button class="filter-btn" data-filter="Python">Python</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project cards will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skills-chart">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="skills-list">
+                    <!-- Skills will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section certifications-section">
+            <h2 class="section-title">My <span>Certifications</span></h2>
+            
+            <!-- Filter Buttons Container -->
+            <div class="filters-container">
+                <div class="certification-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="linkedin">LinkedIn</button>
+                    <button class="filter-btn" data-filter="udemy">Udemy</button>
+                    <button class="filter-btn" data-filter="coursera">Coursera</button>
+                    <button class="filter-btn" data-filter="others">Others</button>
+                </div>
+            </div>
+            
+            <div class="certifications-grid">
+                <!-- Certification cards will be dynamically loaded here -->
+            </div>
+            
+            <div class="view-all-container">
+                <a href="certifications/index.html" class="btn btn-secondary">View All Certifications</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <h1 class="about-title">About Me</h1>
+                
+                <div class="about-content">
+                    <div class="about-text-content">
+                        <div class="mission-block">
+                            <h2 class="mission-title">My Mission</h2>
+                            <blockquote class="mission-quote">
+                                "To transform complex data into clear, actionable insights that empower organizations to make confident decisions and achieve measurable results."
+                            </blockquote>
+                        </div>
+                        
+                        <div class="about-text">
+                            <p>With over 8 years of experience in ERP consultation and data analytics, I specialize in turning raw numbers into strategic narratives that drive business success.</p>
+                            
+                            <p>As a specialist with expertise in Power BI, Excel, SQL, and Python, I've collaborated with organizations to uncover hidden opportunities, solve complex problems, and implement data-driven strategies with measurable outcomes.</p>
+                            
+                            <p>What sets me apart is my ability to bridge the gap between technical analysis and business strategy. I don't just process data—I translate it into stories and visualizations that make complex information accessible and meaningful to stakeholders at all levels.</p>
+                        </div>
+                        
+                        <div class="signature">
+                            <p>Niroshan Lakmal</p>
+                        </div>
+                        
+                        <div class="about-actions">
+                            <a href="#services" class="about-btn about-btn-primary">
+                                <span>View Services</span>
+                                <i class="fas fa-arrow-right about-btn-icon"></i>
+                            </a>
+                            <a href="#contact" class="about-btn about-btn-secondary">
+                                <span>Contact Me</span>
+                                <i class="fas fa-envelope about-btn-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="assets/images/Profile.jpg" alt="Niroshan Lakmal" class="profile-img" />
+                            <div class="image-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="contact-header">
+            <div class="contact-title-container">
+                <h2 class="contact-title">Get In Touch</h2>
+                <div class="animated-underline"></div>
+            </div>
+            <p class="contact-description">Have a question or want to work together? Drop me a message below or connect with me directly.</p>
+            <div class="contact-social">
+                <a href="https://www.linkedin.com/in/niroshan4220" class="social-link linkedin" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="social-tooltip">LinkedIn</span>
+                </a>
+                <a href="https://github.com/Niroshan-git" class="social-link github" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                    <span class="social-tooltip">GitHub</span>
+                </a>
+                <a href="mailto:nirowickramasooriya3@gmail.com" class="social-link email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="social-tooltip">Email</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="contact-form-container">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Your Name</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group">
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected></option>
+                        <option value="feedback">Feedback</option>
+                        <option value="project">Want to do a project</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div id="otherSubjectContainer" class="form-group hidden">
+                    <input type="text" id="otherSubject" name="otherSubject">
+                    <label for="otherSubject">Please specify</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <label for="message">Your Message</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+        
+        <div id="feedbackModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 id="modalTitle">Thank You!</h3>
+                <p id="modalMessage">Your feedback has been received.</p>
+                <button id="modalClose" class="modal-close">OK</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/projects.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/filtering.js"></script>
+    <script src="assets/js/scrollAnimations.js"></script>
+    <script src="assets/js/chat.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Chat with me</h3>
+                <button class="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    <span class="message-content">Hi there! I'm Niroshan's virtual assistant. How can I help you today?</span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
