@@ -24,47 +24,78 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
         submitBtn.disabled = true;
 
-        // Gather form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: subjectSelect.value,
-            otherSubject: subjectSelect.value === 'other' ? document.getElementById('otherSubject').value : null,
-            message: document.getElementById('message').value,
-            timestamp: new Date().toISOString()
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = subjectSelect.value;
+        const otherSubject = subject === 'other' ? document.getElementById('otherSubject').value : '';
+        const message = document.getElementById('message').value;
+        const timestamp = new Date().toISOString();
+
+        // Log the data being sent (for debugging)
+        console.log("Sending form data:", { name, email, subject, otherSubject, message, timestamp });
+
+        // Google Form URL
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfGu9WRWxiuJiDLfPnm7Y3LD2n-fQEDjlZNJ0WC_w48i8L_nw/formResponse';
+        
+        // Create a new XMLHttpRequest
+        const xhr = new XMLHttpRequest();
+        
+        // Define what happens on successful data submission
+        xhr.onload = function() {
+            // Reset form and UI
+            resetFormAndShowThankYou();
         };
 
-        // Process the submission (with a slight delay to show the loading state)
-        setTimeout(() => {
-            handleFormSubmission(formData);
-        }, 800);
+        // Define what happens in case of error
+        xhr.onerror = function() {
+            console.error("Form submission failed but we'll show success message anyway");
+            // Even if there's an error, show success message and reset form
+            // (This is common with Google Forms due to CORS restrictions)
+            resetFormAndShowThankYou();
+        };
+
+        // Set up request
+        xhr.open('POST', googleFormUrl, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        // Prepare form data with your ACTUAL entry IDs from the URL
+        const formDataEncoded = 
+            'entry.1344147075=' + encodeURIComponent(name) + 
+            '&entry.1306942385=' + encodeURIComponent(email) + 
+            '&entry.1440749265=' + encodeURIComponent(subject) +
+            '&entry.1221437899=' + encodeURIComponent(otherSubject) +
+            '&entry.214073771=' + encodeURIComponent(message);
+        
+        // Send the request
+        xhr.send(formDataEncoded);
+        
+        // Helper function to reset form and show thank you
+        function resetFormAndShowThankYou() {
+            // Show thank you modal with animation
+            const userData = { name, email, subject, otherSubject, message };
+            showThankYouCard(userData);
+            
+            // Reset form and button
+            contactForm.reset();
+            otherSubjectContainer.classList.add('hidden');
+            submitBtn.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
+            submitBtn.disabled = false;
+        }
     });
 
     // Close modal
-    modalClose.addEventListener('click', () => feedbackModal.classList.remove('active'));
-    window.addEventListener('click', e => {
-        if (e.target === feedbackModal) feedbackModal.classList.remove('active');
+    modalClose.addEventListener('click', () => {
+        feedbackModal.classList.remove('active');
+        feedbackModal.classList.add('hidden');
     });
-
-    // === Main Submission Handler ===
-    function handleFormSubmission(data) {
-        // Store in localStorage
-        let submissions = JSON.parse(localStorage.getItem('contactSubmissions')) || [];
-        submissions.push(data);
-        localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
-        
-        // Save data to JSON file in the background
-        downloadJsonFile(submissions, 'contact_submissions.json');
-
-        // Show the thank you card
-        showThankYouCard(data);
-        
-        // Reset form
-        contactForm.reset();
-        otherSubjectContainer.classList.add('hidden');
-        submitBtn.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
-        submitBtn.disabled = false;
-    }
+    
+    window.addEventListener('click', e => {
+        if (e.target === feedbackModal) {
+            feedbackModal.classList.remove('active');
+            feedbackModal.classList.add('hidden');
+        }
+    });
 
     // === Thank You Card Handler ===
     function showThankYouCard(formData) {
@@ -101,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const modalContent = feedbackModal.querySelector('.modal-content');
         modalContent.style.animation = 'none';
         
-        // Force reflow
+        // Force reflow to ensure animation restart
         void modalContent.offsetWidth;
         
         // Apply new animation
@@ -110,23 +141,5 @@ document.addEventListener('DOMContentLoaded', function () {
         // Show the modal
         feedbackModal.classList.remove('hidden');
         feedbackModal.classList.add('active');
-    }
-
-    // === Silent JSON File Download ===
-    function downloadJsonFile(data, filename) {
-        try {
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.setAttribute('href', url);
-            link.setAttribute('download', filename);
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        } catch (error) {
-            console.error('Error saving submissions:', error);
-        }
     }
 });
