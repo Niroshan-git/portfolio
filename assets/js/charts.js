@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Skills data for radar chart
     const skillsData = {
-        labels: ['Data Analysis', 'Crytical Thinking', 'ERP Cosmultation', 'Visualization', 'Python', 'SQL', 'Power BI'],
+        labels: ['Data Analysis', 'Crytical Thinking', 'ERP Consultation', 'Visualization', 'Python', 'SQL', 'Power BI'],
         datasets: [{
             label: 'Technical Skills',
             data: [90, 85, 75, 95, 50, 80, 90],
